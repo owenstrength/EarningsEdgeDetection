@@ -1,3 +1,13 @@
+# Earnings Edge Detection Scanner
+
+Forked from [Jayesh-Chhabra/EarningsEdgeDetection](https://github.com/Jayesh-Chhabra/EarningsEdgeDetection)
+
+This fork includes a few minor changes to the original code, including:
+- Added a terminal based ui for monitoring possible trades in real time
+- Added more filters to the scanner
+- Created a basic script for analyzing the results of the scanner
+
+The original readme is below: 
 # EarningsEdgeDetection
 
 A sophisticated scanner for identifying high-probability earnings trades based on volatility term structure and other key metrics.
