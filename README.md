@@ -133,6 +133,10 @@ Optional parameters:
    - Near Miss: 1.00 - 1.24
    - Fail: < 1.00
 
+5. Float (M) / Market Cap (B) ratio
+   - Pass: <= 0.4
+   - Near Miss: > 0.4
+
 ## Iron Fly Strategy
 
 When using the `--iron-fly` or `-i` flag, the scanner will calculate recommended iron fly trades for each qualifying stock:
