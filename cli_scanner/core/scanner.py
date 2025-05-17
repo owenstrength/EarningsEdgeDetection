@@ -796,11 +796,11 @@ class EarningsScanner:
             current_price = yf_ticker.history(period='1d')['Close'].iloc[-1]
                 
             metrics['price'] = current_price
-            if current_price < 10.0:
+            if current_price < 1.0:
                 return {
                     'pass': False,
                     'near_miss': False,
-                    'reason': f"Price ${current_price:.2f} < $10.00",
+                    'reason': f"Price ${current_price:.2f} < $1.00",
                     'metrics': {'price': current_price}
                 }
 
@@ -969,6 +969,15 @@ class EarningsScanner:
                 failed_checks.append(f"Volume {avg_volume:,.0f} < 1M")
             elif avg_volume < 1_500_000:
                 near_miss_checks.append(f"Volume {avg_volume:,.0f} < 1.5M") 
+            
+            # Market Cap to Float ratio check
+            market_cap = yf_ticker.info.get('marketCap', 0)
+            float_shares = yf_ticker.info.get('floatShares', 0)
+            float_ratio = round(market_cap / 1e9, 2) / round(float_shares / 1e6, 2) if float_shares > 0 else 0
+            metrics['float_ratio'] = float_ratio
+
+            if float_ratio > 0.4:
+                near_miss_checks.append(f"Float ratio {float_ratio:.2f} > 0.4")
 
             # Market Chameleon check - only if we haven't failed already
             if not failed_checks:  # Skip if already failing other checks
