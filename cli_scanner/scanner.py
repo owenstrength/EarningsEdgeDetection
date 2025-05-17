@@ -133,6 +133,8 @@ def main():
             print(f"  IV/RV Ratio: {metrics['iv_rv_ratio']:.2f}")
         if 'win_rate' in metrics and 'win_quarters' in metrics:
             print(f"  Winrate: {metrics['win_rate']:.1f}% over the last {metrics['win_quarters']} earnings")
+        if 'float_ratio' in metrics:
+            print(f"  Float/Market Cap: {metrics['float_ratio']:.4f}")
         
         # Print additional metrics if available
         print("\nADDITIONAL METRICS:")
@@ -242,7 +244,8 @@ def main():
                         print(f"    Winrate: {metrics['win_rate']:.1f}% over the last {metrics['win_quarters']} earnings")
                         print(f"    IV/RV Ratio: {metrics['iv_rv_ratio']:.2f}")
                         print(f"    Term Structure: {metrics['term_structure']:.3f}")
-                        
+                        print(f"    Float/Market Cap: {metrics['float_ratio']:.4f}")
+
                         # Calculate and display iron fly strikes if flag is set
                         if args.iron_fly:
                             iron_fly = scanner.calculate_iron_fly_strikes(ticker)
@@ -279,6 +282,7 @@ def main():
                         print(f"    Winrate: {metrics['win_rate']:.1f}% over the last {metrics['win_quarters']} earnings")
                         print(f"    IV/RV Ratio: {metrics['iv_rv_ratio']:.2f}")
                         print(f"    Term Structure: {metrics['term_structure']:.3f}")
+                        print(f"    Float/Market Cap: {metrics['float_ratio']:.4f}")
                         
                         # Calculate and display iron fly strikes if flag is set
                         if args.iron_fly:
@@ -318,6 +322,7 @@ def main():
                         print(f"      Winrate: {metrics['win_rate']:.1f}% over the last {metrics['win_quarters']} earnings")
                         print(f"      IV/RV Ratio: {metrics['iv_rv_ratio']:.2f}")
                         print(f"      Term Structure: {metrics['term_structure']:.3f}")
+                        print(f"    Float/Market Cap: {metrics['float_ratio']:.4f}")
                 else:
                     print("  None")
             

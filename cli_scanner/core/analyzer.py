@@ -184,9 +184,14 @@ class OptionsAnalyzer:
             # Get volume data
             avg_volume = hist_data['Volume'].rolling(30).mean().dropna().iloc[-1]
 
+            market_cap = stock.info.get('marketCap', 0)
+            float_shares = stock.info.get('floatShares', 0)
+            float_ratio = round(market_cap / 1e9, 2) / round(float_shares / 1e6, 2) if float_shares > 0 else 0
+            
             # Check if we have deltas to return
             result_dict = {
                 'avg_volume': avg_volume >= 1_500_000,
+                'float_ratio': float_ratio,
                 'iv30_rv30': iv30 / hist_vol if hist_vol > 0 else 9999,
                 'term_slope': slope,
                 'term_structure_valid': slope <= -0.004,
