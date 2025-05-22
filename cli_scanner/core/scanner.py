@@ -732,9 +732,16 @@ class EarningsScanner:
                     self._driver.get(url)
                     
                     wait = WebDriverWait(self._driver, 8)  # Even shorter timeout
+                    
+                    
                     section = wait.until(
                         EC.presence_of_element_located((By.CLASS_NAME, "symbol-section-header-descr"))
                     )
+
+                    # IF ON WINDOWS, REPLACE THE PREVIOUS LINES WITH THIS
+                    # section = wait.until(
+                    #     EC.presence_of_element_located((By.ID, "summ-earn-move-div"))
+                    # )
             
                     # Default results
                     win_rate = 0.0

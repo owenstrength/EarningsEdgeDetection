@@ -4,20 +4,36 @@ Forked from [Jayesh-Chhabra/EarningsEdgeDetection](https://github.com/Jayesh-Chh
 
 This fork includes a UI for the Earnings Edge Detection scanner, allowing users to easily configure and run scans.
 
-## Running the UI
-1. Clone the repository:
+## Setup Instructions
+### 1. Clone the repository:
 ```bash
 git clone https://github.com/owenstrength/EarningsEdgeDetection.git
 ```
-2. Navigate to the `cli_scanner` directory:
+### 2. Navigate to the `cli_scanner` directory:
 ```bash
 cd EarningsEdgeDetection/cli_scanner
 ```
-3. Install the required packages:
+### 3. Install the required packages:
 ```bash
 pip install -r requirements.txt
 ```
-4. Run the UI:
+   ### If on Windows:
+   -  Install the `windows-curses` package to enable the UI:
+      ```bash
+      pip install windows-curses
+      ```
+   -  Replace code in `./core/scanner.py` (line 737):
+      ```python
+         section = wait.until(
+            EC.presence_of_element_located((By.CLASS_NAME, "symbol-section-header-descr"))
+            )
+
+         # REPLACE WITH:
+         section = wait.until(
+            EC.presence_of_element_located((By.ID, "summ-earn-move-div"))
+            )  
+      ```
+### 4. Run the UI:
 ```bash
 python trade_monitor.py
 ```

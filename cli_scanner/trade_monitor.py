@@ -364,7 +364,7 @@ class TradeMonitor:
                         # Populate Tier 2 tickers
                         if self.tier2_tickers:
                             # Calculate columns based on available width
-                            ticker_width = 30  # Width of each ticker box (28 + 2 padding)
+                            ticker_width = 38  # Width of each ticker box (36 + 2 padding)
                             columns = max(1, trades['tier2']['width'] // ticker_width)
                             
                             # Setup initial positions

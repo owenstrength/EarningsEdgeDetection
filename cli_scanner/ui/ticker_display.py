@@ -7,7 +7,6 @@ from .components import draw_btop_box
 
 def draw_ticker_box(stdscr, y, x, ticker, metrics, color, max_y, max_x, width=40):
     """Draw a box containing ticker information in BTOP style"""
-    # Use a narrower width for ticker boxes (28 instead of 40)
     ticker_width = 36
     
     height = 5
