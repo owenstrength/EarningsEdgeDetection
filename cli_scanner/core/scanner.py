@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 handler = logging.StreamHandler()
 handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
-logger.addHandler(handler)
+#logger.addHandler(handler)
 
 core.yfinance_cookie_patch.patch_yfdata_cookie_basic()
 session = curl_requests.Session(impersonate="chrome")
@@ -969,15 +969,6 @@ class EarningsScanner:
                 failed_checks.append(f"Volume {avg_volume:,.0f} < 1M")
             elif avg_volume < 1_500_000:
                 near_miss_checks.append(f"Volume {avg_volume:,.0f} < 1.5M") 
-            
-            # Market Cap to Float ratio check
-            market_cap = yf_ticker.info.get('marketCap', 0)
-            float_shares = yf_ticker.info.get('floatShares', 0)
-            float_ratio = round(market_cap / 1e9, 2) / round(float_shares / 1e6, 2) if float_shares > 0 else 0
-            metrics['float_ratio'] = float_ratio
-
-            if float_ratio > 0.4:
-                near_miss_checks.append(f"Float ratio {float_ratio:.2f} > 0.4")
 
             # Market Chameleon check - only if we haven't failed already
             if not failed_checks:  # Skip if already failing other checks

@@ -26,3 +26,5 @@ Thumbs.db
  
 # Generated files
 recommended_*.txt
+
+cli_scanner/data_exploration
