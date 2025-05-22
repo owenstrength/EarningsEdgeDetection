@@ -1,11 +1,26 @@
-# Earnings Edge Detection Scanner
+# Earnings Edge Detection UI
 
 Forked from [Jayesh-Chhabra/EarningsEdgeDetection](https://github.com/Jayesh-Chhabra/EarningsEdgeDetection)
 
-This fork includes a few minor changes to the original code, including:
-- Added a terminal based ui for monitoring possible trades in real time
-- Added more filters to the scanner
-- Created a basic script for analyzing the results of the scanner
+This fork includes a UI for the Earnings Edge Detection scanner, allowing users to easily configure and run scans.
+
+## Running the UI
+1. Clone the repository:
+```bash
+git clone https://github.com/owenstrength/EarningsEdgeDetection.git
+```
+2. Navigate to the `cli_scanner` directory:
+```bash
+cd EarningsEdgeDetection/cli_scanner
+```
+3. Install the required packages:
+```bash
+pip install -r requirements.txt
+```
+4. Run the UI:
+```bash
+python trade_monitor.py
+```
 
 The original readme is below: 
 # EarningsEdgeDetection
